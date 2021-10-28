@@ -148,9 +148,15 @@ public class PetController {
 		pet.setNamePet(pet.getNamePet());
 		listaMascotas = pService.buscarNombre(pet.getNamePet());
 		if (listaMascotas.isEmpty()) {
+			listaMascotas= pService.buscarPropietario(pet.getNamePet());
+		}
+		if (listaMascotas.isEmpty()) {
+			listaMascotas= pService.buscarRaza(pet.getNamePet());
+		}
+		if (listaMascotas.isEmpty()) {
 			model.put("mensaje", "No existen coincidencias");
 		}
-		model.put("listaMascotas", listaMascotas);		
+		model.put("listaMascotas", listaMascotas);	
 		return "buscar";
 	}		
 }
