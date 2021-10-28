@@ -14,6 +14,7 @@
 			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
 			rel="stylesheet" id="bootstrap-css">
 		</link>
+		<link rel="style" href="src/main/webapp/style.css">
 		
 		<script
 			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
@@ -25,10 +26,28 @@
 	</head>
 
 	<body>
+		
+		<style>
+			.navbar {
+		   		border-radius: 0px;
+			}
+			.jumbotron {
+  				background-image: url("https://images.unsplash.com/photo-1508020963102-c6c723be5764?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80");
+ 				background-position: center;
+  				background-repeat: no-repeat;
+  				background-size: cover;
+  				height: 350px;}
+		</style>
+		
     	<div th:replace="fragments/header :: header"></div>
     	<div class="container">
-    		<img th:src="@{/imagenes/img.png}" width="600" height="600" alt="logo" align="middle">
-    		</img>
+    		<div style="color: white;" class="jumbotron">
+ 			 	<h1>PET HAREM</h1>
+  				<p>¡El paraiso de las mascotas!</p>
+  				<p><a class="btn btn-primary btn-lg" href="#" role="button">Registrarse</a></p>
+			</div>
+    		
+    		
     	</div>
     	<div th:replace="fragments/footer :: footer"></div>
 	</body>
