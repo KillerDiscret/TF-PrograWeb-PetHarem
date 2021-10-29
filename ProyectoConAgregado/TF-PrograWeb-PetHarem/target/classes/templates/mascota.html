@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="ISO-8859-1"></meta>
+		<title>Mascota</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+		</link>
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>
+				
+	</head>
+
+	<body>
+    	<div th:replace="fragments/header2 :: header2"></div>
+    	<div class="container">
+    		<form th:action="@{/mascota/registrar}" method="post" th:object="${mascota}">
+    			<div class="form-group">
+    				<label for="idMascota">ID:</label>
+    				<input type="text" class="form-control" th:field="*{idMascota}"></input>
+    				
+    				<div class="form-group">
+    					<label for="nombre">NOMBRE:</label>
+    					<input type="text" class="form-control" th:field="*{NMascota}" id="nombre"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('NMascota')}" 
+								th:errors="*{NMascota}">
+						</div>    					
+    				</div>
+    				<div class="form-group">
+    					<label for="fechaNacimiento">FECHA NACIMIENTO:</label>
+    					<input type="date" class="form-control" th:field="*{birthDatePet}" id="fechaNacimiento"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('birthDatePet')}" 
+								th:errors="*{birthDatePet}">
+						</div>    					
+    				</div>    
+    								
+    				<div class="form-group">
+    					<label for="nombre">RAZA</label>
+    					<select class="form-control" th:field="*{raza.idRaza}">
+    						<option th:each="r: ${listaRazas}"
+    							th:value="${r.idRaza}"
+    							th:text="${r.NRaza}"
+    							th:selected="(${r.idRaza} == *{raza.idRaza})">
+    						</option>    					
+    					</select>
+    				</div>    
+
+    				<div class="form-group">
+    					<label for="duenio">DUENIO</label>
+    					<select class="form-control" th:field="*{duenio.idDuenio}">
+    						<option th:each="d: ${listaDuenios}"
+    							th:value="${d.idDuenio}"
+    							th:text="${d.nameDuenio}"
+    							th:selected="(${d.idDuenio} == *{duenio.idDuenio})">
+    						</option>    					
+    					</select>
+    				</div>    
+    				
+    				<div class="form-group">
+    					<label for="peso">PESO:</label>
+    					<input type="text" class="form-control" th:field="*{peso}" id="peso"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('peso')}" 
+								th:errors="*{peso}">
+						</div>    					
+    				</div>
+    				
+    				<div class="form-group">
+    					<label for="tamanio">TAMANIO:</label>
+    					<input type="text" class="form-control" th:field="*{tamanio}" id="tamanio"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('tamanio')}" 
+								th:errors="*{tamanio}">
+						</div>    					
+    				</div>
+   				
+    			</div>
+    			<button type="submit" class="btn btn-primary">Aceptar</button>
+    			<a href="/mascota/listar" class="btn btn-danger">Cancelar</a>
+    		</form>
+    	</div>
+    	<div th:replace="fragments/footer :: footer"></div>
+	</body>
+
+</html>

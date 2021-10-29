@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="ISO-8859-1"></meta>
+		<title>Propietario</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+		</link>
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>
+				
+	</head>
+
+	<body>
+    	<div th:replace="fragments/header2 :: header2"></div>
+    	<div class="container">
+    		<form th:action="@{/duenio/registrar}" method="post" th:object="${duenio}">
+    			<div class="form-group">
+    				<label for="idDuenio">ID:</label>
+    				<input type="text" class="form-control" th:field="*{idDuenio}"></input>
+    				
+    				<div class="form-group">
+    					<label for="nombre">Nombre:</label>
+    					<input type="text" class="form-control" th:field="*{nameDuenio}" id="nombre"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('nameDuenio')}" 
+								th:errors="*{nameDuenio}">
+						</div>
+						
+						<label for="apellido">Apellido:</label>
+    					<input type="text" class="form-control" th:field="*{nameApellido}" id="apellido"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('nameApellido')}" 
+								th:errors="nameApellido">
+						</div>
+						
+						<label for="dni">DNI:</label>
+    					<input type="number" class="form-control" th:field="*{numDNI}" id="dni"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('numDNI')}" 
+								th:errors="numDNI">
+						</div>
+						
+						<label for="correo">Correo:</label>
+    					<input type="text" class="form-control" th:field="*{NCorreo}" id="correo"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('NCorreo')}" 
+								th:errors="NCorreo">
+						</div>
+						
+						<label for="celular">Celular:</label>
+    					<input type="number" class="form-control" th:field="*{numCelular}" id="celular"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('numCelular')}" 
+								th:errors="numCelular">
+						</div>
+    					
+    				</div>
+    				
+    			</div>
+    			<button type="submit" class="btn btn-primary">Aceptar</button>
+    			<a href="/duenio/listar" class="btn btn-danger">Cancelar</a>
+    		</form>
+    	</div>
+    	<div th:replace="fragments/footer :: footer"></div>
+	</body>
+
+</html>
