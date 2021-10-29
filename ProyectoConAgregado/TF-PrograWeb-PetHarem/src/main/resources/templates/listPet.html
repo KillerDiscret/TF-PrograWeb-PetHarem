@@ -61,10 +61,10 @@
     								<td th:text="${#dates.format(mas.birthDatePet, 'dd/MM/yyyy')}"></td>
     								<td th:text="${mas.raza.NRaza}"></td>
     								<td th:text="${mas.duenio.nameDuenio}"></td>
-    								<td><a th:href="@{/mas/eliminar?id=}+${mas.idMascota}">Eliminar</a></td>    								
-    								<td><a th:href="@{'/mas/modificar/'}+${mas.idMascota}">Modificar</a></td>
-    								<td th:text="${mas.peso}"></td>
+								<td th:text="${mas.peso}"></td>
     								<td th:text="${mas.tamanio}"></td>
+    								<td><a th:href="@{/mascota/eliminar?id=}+${mas.idMascota}">Eliminar</a></td>    								
+    								<td><a th:href="@{'/mascota/modificar/'}+${mas.idMascota}">Modificar</a></td>
     							</tr>
     						</tbody>
     					</table> 
